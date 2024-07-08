@@ -1,0 +1,28 @@
+{
+
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "your_tracker",
+      "request": "launch",
+      "flutterMode": "debug",
+      "type": "dart",
+      "args": [
+        "--dart-define-from-file",
+        "./.env.json"
+      ]
+    },
+    {
+      "name": "your_tracker (profile mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "your_tracker (release mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release"
+    }
+  ]
+}
