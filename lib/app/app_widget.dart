@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:your_tracker/app/pages/search_packages.dart';
+import 'package:your_tracker/app/shared/app_light_theme.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({super.key});
@@ -14,6 +15,7 @@ class _AppWidgetState extends State<AppWidget> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: AppLightTheme.theme,
       scaffoldMessengerKey: scaffoldState,
       debugShowCheckedModeBanner: false,
       title: 'Your Tracker',
