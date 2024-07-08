@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:your_tracker/app/pages/search_packages.dart';
 import 'package:your_tracker/app/shared/app_light_theme.dart';
+import 'package:your_tracker/app/shared/providers.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({super.key});
@@ -11,6 +12,12 @@ class AppWidget extends StatefulWidget {
 
 class _AppWidgetState extends State<AppWidget> {
   GlobalKey<ScaffoldMessengerState> scaffoldState = GlobalKey<ScaffoldMessengerState>();
+
+  @override
+  void initState() {
+    setup();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
