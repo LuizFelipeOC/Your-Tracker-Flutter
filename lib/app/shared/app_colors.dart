@@ -5,9 +5,10 @@ final class AppColors {
   static Color blackWith40Opacity = const Color(0xFF000000).withOpacity(0.40);
   static Color blackWith50Opacity = const Color(0xFF000000).withOpacity(0.50);
   static Color blackWith60Opacity = const Color(0xFF000000).withOpacity(0.60);
-  static Color blackWith30Opacity = const Color(0xFF000000).withOpacity(0.30);
+  static Color blackWith30Opacity = const Color(0xFF000000).withOpacity(0.03);
 
   static const Color red = Color(0xFFE52323);
+  static Color redWith80Opacity = const Color(0xFFE52323).withOpacity(0.8);
 
   static const Color green = Color(0xFF45D003);
 
