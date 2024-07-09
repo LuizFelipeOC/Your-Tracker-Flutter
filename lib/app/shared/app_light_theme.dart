@@ -44,6 +44,14 @@ final class AppLightTheme {
       headlineLarge: TextStyle(
         fontWeight: FontWeight.w700,
       ),
+      bodyMedium: TextStyle(
+        fontWeight: FontWeight.w500,
+        fontSize: 16,
+      ),
+      bodySmall: TextStyle(
+        fontWeight: FontWeight.w400,
+        fontSize: 14,
+      ),
     );
   }
 }
