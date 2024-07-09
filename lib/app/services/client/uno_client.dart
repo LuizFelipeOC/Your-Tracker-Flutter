@@ -13,7 +13,11 @@ class UnoClient implements IClient {
   @override
   AsyncResult<SuccessResponse, FailureResponse> get({required Map<String, String> params}) async {
     try {
-      final response = await uno.get(appUrl.url, params: params);
+      final response = await uno.get(
+        '${appUrl.url}&codigo=${params['codigo']}',
+        headers: {'content-type': 'application/json'},
+      );
+
       return Success(SuccessResponse(data: response.data));
     } on UnoError catch (unoError) {
       return Failure(
