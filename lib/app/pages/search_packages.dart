@@ -7,6 +7,7 @@ import 'package:your_tracker/app/shared/custom_date_time.dart';
 import 'package:your_tracker/app/shared/providers.dart';
 import 'package:your_tracker/app/widgets/event_tracked_package_card.dart';
 import 'package:your_tracker/app/app_widget.dart';
+import 'package:your_tracker/app/widgets/package_snack_bar.dart';
 
 class SearchPackgesPage extends StatefulWidget {
   const SearchPackgesPage({super.key});
@@ -20,23 +21,24 @@ class _SearchPackgesPageState extends State<SearchPackgesPage> {
 
   @override
   void initState() {
-    _searchController.addListener(() {
-      if (_searchController.value is ErrorSearchedPackageState) {
-        scaffoldState.currentState?.showSnackBar(
-          SnackBar(
-            backgroundColor: AppColors.redWith80Opacity,
-            behavior: SnackBarBehavior.floating,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            hitTestBehavior: HitTestBehavior.opaque,
-            content: const Row(
-              children: [
-                Flexible(child: Text('O pacote ainda não foi postado/encontrado, ou tipo de envio não é permitido o rastreio')),
-              ],
+    _searchController.addListener(
+      () {
+        if (_searchController.value is ErrorSearchedPackageState) {
+          scaffoldState.currentState?.showSnackBar(
+            PackageSnackBar(
+              type: PackageSnackBarType.error,
+              content: Row(
+                children: [
+                  Icon(UIcons.boldRounded.exclamation, size: 26, color: AppColors.white),
+                  const SizedBox(width: 10),
+                  const Flexible(child: Text('Pacote não foi encontrado/postado, ou o tipo de envio não é rastreável pelos nossos serviços!')),
+                ],
+              ),
             ),
-          ),
-        );
-      }
-    });
+          );
+        }
+      },
+    );
 
     super.initState();
   }
