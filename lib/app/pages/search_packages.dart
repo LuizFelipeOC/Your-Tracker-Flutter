@@ -7,6 +7,7 @@ import 'package:your_tracker/app/shared/custom_date_time.dart';
 import 'package:your_tracker/app/shared/providers.dart';
 import 'package:your_tracker/app/widgets/event_tracked_package_card.dart';
 import 'package:your_tracker/app/app_widget.dart';
+import 'package:your_tracker/app/widgets/package_dialog.dart';
 import 'package:your_tracker/app/widgets/package_snack_bar.dart';
 
 class SearchPackgesPage extends StatefulWidget {
@@ -76,7 +77,28 @@ class _SearchPackgesPageState extends State<SearchPackgesPage> {
                                   }
 
                                   return GestureDetector(
-                                    onTap: () {},
+                                    onTap: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (ctx) {
+                                          return PackageDialog(
+                                            title: 'Salvar pacote',
+                                            onTap: () => Navigator.pop(ctx),
+                                            content: Text(
+                                              'Você tem certeza que deseja salvar essa encomenda ?',
+                                              style: Theme.of(context).textTheme.bodySmall,
+                                            ),
+                                            actions: Container(
+                                              alignment: Alignment.bottomRight,
+                                              child: ElevatedButton(
+                                                child: const Text('Salvar'),
+                                                onPressed: () {},
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
                                     child: Icon(
                                       UIcons.boldStraight.heart,
                                       size: 30,
@@ -89,6 +111,7 @@ class _SearchPackgesPageState extends State<SearchPackgesPage> {
                           ),
                           const SizedBox(height: 30),
                           TextFormField(
+                            style: Theme.of(context).textTheme.bodyMedium,
                             onFieldSubmitted: (value) => _searchController.search(),
                             controller: _searchController.searchTextController,
                             onTapOutside: (e) => FocusScope.of(context).unfocus(),
