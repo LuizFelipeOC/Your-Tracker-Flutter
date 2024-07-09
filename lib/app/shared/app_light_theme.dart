@@ -6,6 +6,15 @@ final class AppLightTheme {
         fontFamily: 'Ubuntu',
         textTheme: _textThemeData(),
         inputDecorationTheme: _inputDecorationTheme(),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            shape: WidgetStatePropertyAll(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            ),
+            foregroundColor: const WidgetStatePropertyAll(AppColors.white),
+            backgroundColor: const WidgetStatePropertyAll(AppColors.black),
+          ),
+        ),
       );
 
   static InputDecorationTheme _inputDecorationTheme() {
@@ -43,6 +52,10 @@ final class AppLightTheme {
     return const TextTheme(
       headlineLarge: TextStyle(
         fontWeight: FontWeight.w700,
+      ),
+      bodyLarge: TextStyle(
+        fontWeight: FontWeight.w800,
+        fontSize: 20,
       ),
       bodyMedium: TextStyle(
         fontWeight: FontWeight.w500,
