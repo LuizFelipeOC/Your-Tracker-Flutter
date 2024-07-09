@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uicons/uicons.dart';
 import 'package:your_tracker/app/controller/packages/search_package_controller.dart';
 import 'package:your_tracker/app/controller/packages/search_package_state.dart';
 import 'package:your_tracker/app/shared/app_colors.dart';
@@ -58,20 +59,30 @@ class _SearchPackgesPageState extends State<SearchPackgesPage> {
                       child: Column(
                         children: [
                           Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Welcome\nYour Tracker',
+                                'Bem-Vindo\nYour Tracker',
                                 style: Theme.of(context).textTheme.headlineLarge,
                               ),
-                              // GestureDetector(
-                              //   onTap: () {},
-                              //   child: Icon(
-                              //     Icons.heart_broken_outlined,
-                              //     size: 40,
-                              //     color: AppColors.redWith80Opacity,
-                              //   ),
-                              // )
+                              ValueListenableBuilder(
+                                valueListenable: _searchController,
+                                builder: (_, state, __) {
+                                  if (state is! SuccessSearchedPackageState) {
+                                    return const SizedBox();
+                                  }
+
+                                  return GestureDetector(
+                                    onTap: () {},
+                                    child: Icon(
+                                      UIcons.boldStraight.heart,
+                                      size: 30,
+                                      color: AppColors.redWith80Opacity,
+                                    ),
+                                  );
+                                },
+                              ),
                             ],
                           ),
                           const SizedBox(height: 30),
