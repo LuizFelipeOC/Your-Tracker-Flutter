@@ -5,6 +5,7 @@ final class AppLightTheme {
   static ThemeData get theme => ThemeData(
         fontFamily: 'Ubuntu',
         textTheme: _textThemeData(),
+        bottomSheetTheme: _bottomSheetThemeData(),
         inputDecorationTheme: _inputDecorationTheme(),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
@@ -16,6 +17,14 @@ final class AppLightTheme {
           ),
         ),
       );
+
+  static BottomSheetThemeData _bottomSheetThemeData() {
+    return BottomSheetThemeData(
+      modalElevation: 200,
+      elevation: 900,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    );
+  }
 
   static InputDecorationTheme _inputDecorationTheme() {
     return InputDecorationTheme(
