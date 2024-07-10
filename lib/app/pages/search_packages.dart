@@ -7,6 +7,7 @@ import 'package:your_tracker/app/shared/custom_date_time.dart';
 import 'package:your_tracker/app/shared/providers.dart';
 import 'package:your_tracker/app/widgets/event_tracked_package_card.dart';
 import 'package:your_tracker/app/app_widget.dart';
+import 'package:your_tracker/app/widgets/modal_sheet_save_package.dart';
 import 'package:your_tracker/app/widgets/package_dialog.dart';
 import 'package:your_tracker/app/widgets/package_snack_bar.dart';
 
@@ -77,8 +78,8 @@ class _SearchPackgesPageState extends State<SearchPackgesPage> {
                                   }
 
                                   return GestureDetector(
-                                    onTap: () {
-                                      showDialog(
+                                    onTap: () async {
+                                      final result = await showDialog<bool?>(
                                         context: context,
                                         builder: (ctx) {
                                           return PackageDialog(
@@ -92,12 +93,28 @@ class _SearchPackgesPageState extends State<SearchPackgesPage> {
                                               alignment: Alignment.bottomRight,
                                               child: ElevatedButton(
                                                 child: const Text('Salvar'),
-                                                onPressed: () {},
+                                                onPressed: () {
+                                                  Navigator.pop(context, true);
+                                                },
                                               ),
                                             ),
                                           );
                                         },
                                       );
+
+                                      if (result != null && result) {
+                                        if (context.mounted) {
+                                          showModalBottomSheet(
+                                            useSafeArea: true,
+                                            isDismissible: false,
+                                            isScrollControlled: true,
+                                            context: context,
+                                            builder: (_) {
+                                              return ModalSheetSavePackage(package: state.package);
+                                            },
+                                          );
+                                        }
+                                      }
                                     },
                                     child: Icon(
                                       UIcons.boldStraight.heart,
