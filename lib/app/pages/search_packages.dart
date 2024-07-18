@@ -31,9 +31,18 @@ class _SearchPackgesPageState extends State<SearchPackgesPage> {
               type: PackageSnackBarType.error,
               content: Row(
                 children: [
-                  Icon(UIcons.boldRounded.exclamation, size: 26, color: AppColors.white),
+                  Icon(
+                    UIcons.boldRounded.exclamation,
+                    size: 26,
+                    color: AppColors.white,
+                  ),
                   const SizedBox(width: 10),
-                  const Flexible(child: Text('Pacote não foi encontrado/postado, ou o tipo de envio não é rastreável pelos nossos serviços!')),
+                  Flexible(
+                    child: Text(
+                      'Seu pacote ainda não está disponível para rastreio. Tente novamente mais tarde.',
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.white),
+                    ),
+                  ),
                 ],
               ),
             ),
