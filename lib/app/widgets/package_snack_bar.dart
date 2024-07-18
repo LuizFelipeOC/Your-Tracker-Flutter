@@ -36,4 +36,7 @@ class PackageSnackBar extends SnackBar {
 
   @override
   ShapeBorder? get shape => RoundedRectangleBorder(borderRadius: BorderRadius.circular(10));
+
+  @override
+  double? get elevation => 2;
 }
